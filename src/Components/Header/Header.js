@@ -15,8 +15,10 @@ const Header = () => {
     }
     const handleSubmit = e => {
         e.preventDefault()
+        if (text === '') return alert('Please Enter a name')
         dispatch(fetchMovies(text))
         dispatch(fetchShows(text))
+        setText('')
     }
     return (
         <div className='header'>
