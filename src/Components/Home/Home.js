@@ -8,14 +8,15 @@ import { fetchMovies, fetchShows } from '../../Tools/Redux/Movie/MovieSlice'
 
 const Home = () => {
     const dispatch = useDispatch();
-
+    const moviename = 'harry';
+    const seriesname = 'mission';
 
     useEffect(() => {
         /*   fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=harry&type=movie`)
               .then(res => res.json())
               .then(data => (dispatch(addMovies(data)))) */
-        dispatch(fetchMovies())
-        dispatch(fetchShows())
+        dispatch(fetchMovies(moviename))
+        dispatch(fetchShows(seriesname))
     }, [dispatch])
 
 

@@ -3,16 +3,16 @@ import { apikey } from '../../Api/Apikey';
 
 export const fetchMovies = createAsyncThunk(
     'movies/fetchMovies',
-    async () => {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=harry&type=movie`)
+    async (text) => {
+        const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=${text}&type=movie`)
             .then(res => res.json())
         return response
     }
 )
 export const fetchShows = createAsyncThunk(
     'movies/fetchShows',
-    async () => {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=friends&type=series`)
+    async (text) => {
+        const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=${text}&type=series`)
             .then(res => res.json())
         return response
     }
