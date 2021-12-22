@@ -6,7 +6,6 @@ export const fetchMovies = createAsyncThunk(
     async () => {
         const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=harry&type=movie`)
             .then(res => res.json())
-        console.log(response)
         return response
     }
 )
@@ -15,7 +14,6 @@ export const fetchShows = createAsyncThunk(
     async () => {
         const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=friends&type=series`)
             .then(res => res.json())
-        console.log(response)
         return response
     }
 )
@@ -24,7 +22,6 @@ export const fetchDetails = createAsyncThunk(
     async (id) => {
         const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&i=${id}&plot=full`)
             .then(res => res.json())
-        console.log(response)
         return response
     }
 )
@@ -46,19 +43,15 @@ export const MovieSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchMovies.pending, () => {
-            console.log('pending')
             // return { ...state, movies: action.payload }
         })
         builder.addCase(fetchMovies.fulfilled, (state, action) => {
-            console.log('successfull')
             state.movies = (action.payload)
         })
         builder.addCase(fetchShows.fulfilled, (state, action) => {
-            console.log('successfull')
             state.shows = (action.payload)
         })
         builder.addCase(fetchDetails.fulfilled, (state, action) => {
-            console.log('successfull')
             state.details = (action.payload)
         })
     },
